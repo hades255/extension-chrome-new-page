@@ -1,0 +1,57 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background: #f0f2f5;
+}
+
+#chrome-content {
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+}
+
+#world-map-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  background: url('images/world-map.svg') no-repeat center center;
+  background-size: contain;
+}
+
+#timezone-list {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.timezone-item {
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 4px;
+  background: white;
+}
+
+.timezone-city {
+  font-weight: bold;
+}
+
+.timezone-time {
+  color: #666;
+}
