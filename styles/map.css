@@ -10,7 +10,7 @@
 
 #timezone-list {
   position: fixed;
-  top: 80px;
+  bottom: 80px;
   right: 20px;
   background: white;
   padding: 16px;

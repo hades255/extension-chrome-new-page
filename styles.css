@@ -27,12 +27,12 @@ body {
   height: 100vh;
   background: url('images/world-map.svg') no-repeat center center;
   background-size: contain;
-  opacity: 0.5;
+  /* opacity: 0.3; */
 }
 
 #timezone-list {
-  position: absolute;
-  top: 40px;
+  position: fixed;
+  bottom: 80px;
   right: 0;
   padding: 20px;
   background: rgba(255, 255, 255, 0.5);
@@ -55,4 +55,8 @@ body {
 
 .timezone-time {
   color: #666;
+}
+
+canvas#analog-clock {
+  transform: scale(0.8);
 }
