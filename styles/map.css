@@ -4,35 +4,45 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: 1;
   opacity: 1;
+  pointer-events: none;
 }
 
 #timezone-list {
   position: fixed;
-  bottom: 80px;
-  right: 20px;
-  background: white;
+  top: 64px;
+  right: 0;
+  background: #fff8;
   padding: 16px;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  max-height: calc(100vh - 160px);
-  overflow-y: auto;
+  overflow-y: hidden;
 }
 
 .timezone-item {
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   padding: 8px;
   border-radius: 4px;
-  background: #f8f9fa;
+  background: #f8f9fa80;
 }
 
 .timezone-city {
-  font-weight: 500;
+  font-weight: 700;
+  font-size: large;
   color: #1a73e8;
 }
 
 .timezone-time {
-  color: #5f6368;
+  color: #2c3138;
   margin-top: 4px;
+  font-size: larger;
+}
+
+#map {
+  width: 100%;
+  height: 100vh;
+  background: url("/images/world-map.svg") no-repeat center center;
+  background-size: contain;
+  opacity: 0.3;
 }

@@ -18,20 +18,18 @@
   font-weight: bold;
 }
 
-#search-input:focus {
-  box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
-  border-color: transparent;
-}
-
 .google-logo-container{
   display: flex;
   justify-content: center;
 }
 
 .google-logo {
-  mask-image: url(/images/google_logo.svg);
-  width: 272px;
-  height: 92px;
+  margin: 0 20px;
+  padding-top: 2px;
+  background-image: url(/images/google_logo.svg);
+  width: 140px;
+  height: 46px;
+  background-size: cover;
 }
 
 @media screen and (max-width: 584px) {

@@ -7,7 +7,7 @@
 }
 
 #todo-container {
-  background: white;
+  background: #EEFE;
   width: 100%;
   max-width: 400px;
   max-height: 400px;
@@ -17,6 +17,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  box-shadow: 1px 2px 4px #0008;
 }
 
 .todo-header {
@@ -28,6 +29,7 @@
 
 #todo-list{
   height: 100%;
+  min-height: 200px;
   overflow-y: auto;
 }
 
@@ -36,6 +38,9 @@
   align-items: center;
   padding: 8px 0;
   border-bottom: 1px solid #eee;
+  font-size: medium;
+  color: #363;
+  font-weight: 600;
 }
 
 .todo-item.completed .todo-text {
@@ -62,7 +67,7 @@
 }
 
 #new-todo {
-  width: 100%;
+  width: 90%;
   padding: 8px;
   border: 1px solid #ddd;
   border-radius: 4px;

@@ -25,7 +25,7 @@ function Clock() {
   minAngle = -90 + second * 0.1;
 
   hourAngle = -90 + (second / 120);
-  canvas = document.querySelector('canvas');
+  canvas = document.querySelector('canvas#analog-clock');
   context = canvas.getContext('2d');
   context.clearRect(0, 0, 500, 500);
 
@@ -57,18 +57,18 @@ function drawFace(context) {
 
   context.beginPath();
   context.arc(250, 250, 212, 0, 2 * Math.PI);
-  context.fillStyle = 'white';
+  context.fillStyle = '#EEFE';
   context.fill();
   context.closePath();
 }
 
 function drawTicks(context) {
-  drawPath(context, 'M -108,-1 L 108,-1 108,1 -108,1 Z', 'gray', 0);
-  drawPath(context, 'M -108,-1 L 108,-1 108,1 -108,1 Z', 'gray', 30);
-  drawPath(context, 'M -108,-1 L 108,-1 108,1 -108,1 Z', 'gray', 60);
-  drawPath(context, 'M -108,-1 L 108,-1 108,1 -108,1 Z', 'gray', 90);
-  drawPath(context, 'M -108,-1 L 108,-1 108,1 -108,1 Z', 'gray', 120);
-  drawPath(context, 'M -108,-1 L 108,-1 108,1 -108,1 Z', 'gray', 150);
+  drawPath(context, 'M -108,-1 L 108,-1 108,1 -108,1 Z', 'lightgrey', 0);
+  drawPath(context, 'M -108,-1 L 108,-1 108,1 -108,1 Z', 'lightgrey', 30);
+  drawPath(context, 'M -108,-1 L 108,-1 108,1 -108,1 Z', 'lightgrey', 60);
+  drawPath(context, 'M -108,-1 L 108,-1 108,1 -108,1 Z', 'lightgrey', 90);
+  drawPath(context, 'M -108,-1 L 108,-1 108,1 -108,1 Z', 'lightgrey', 120);
+  drawPath(context, 'M -108,-1 L 108,-1 108,1 -108,1 Z', 'lightgrey', 150);
 
   drawPath(context, 'M 154,0 L 178,-6 178,6 Z', 'black', 0);
   drawPath(context, 'M 154,0 L 178,-6 178,6 Z', 'black', 90);
@@ -143,7 +143,7 @@ function drawTicks(context) {
 }
 
 function drawSecHand(context,ang) {
-  drawPath(context, 'M -50,0 L -45,-5 -25,-5 -22,-2 22,-2 25,-5 180,0 25,5 22,2 -22,2 -25,5 -45,5 Z', '#333', ang);
+  drawPath(context, 'M -50,0 L -45,-5 -25,-5 -22,-2 22,-2 25,-5 180,0 25,5 22,2 -22,2 -25,5 -45,5 Z', '#555', ang);
   context.beginPath();
   context.arc(0, 0, 8, 0, 2 * Math.PI);
   context.fillStyle = '#333';
