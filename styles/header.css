@@ -2,10 +2,10 @@
   position: fixed;
   width: 100vw;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  padding: 12px 20px;
-  background: rgba(255, 255, 255, 0.9);
+  padding: 12px 0px;
+  /* background: rgba(255, 255, 255, 0.9); */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -24,4 +24,13 @@
 #gmail-counter {
   margin-left: 20px;
   color: #666;
+}
+
+.gb_W {
+  padding: 12px;
+  font-size: large;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  text-shadow: 0 2px 4px #000;
 }

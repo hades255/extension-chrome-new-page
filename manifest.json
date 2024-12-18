@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Enhanced New Tab with World Time",
-  "version": "1.0",
+  "version": "1.02",
   "description": "Enhanced new tab page with world time, Google integration and todo list",
   "permissions": [
     "storage",

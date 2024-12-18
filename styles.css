@@ -27,7 +27,7 @@ body {
   height: 100vh;
   background: url('images/world-map.svg') no-repeat center center;
   background-size: contain;
-  /* opacity: 0.3; */
+  opacity: 0.3;
 }
 
 #timezone-list {
