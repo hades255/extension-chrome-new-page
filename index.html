@@ -1,25 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>New Tab</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div id="chrome-content">
-    <!-- Chrome's original content will be injected here -->
-    <div id="most-visited"></div>
-    <div id="shortcuts"></div>
-  </div>
-  
-  <div id="world-map-container">
-    <div id="map"></div>
-    <div id="timezone-list"></div>
-  </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Tab</title>
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="styles/header.css" />
+    <link rel="stylesheet" href="styles/search.css" />
+    <link rel="stylesheet" href="styles/todo.css" />
+    <link rel="stylesheet" href="styles/map.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- <header id="header">
+      <div id="user-info"></div>
+      <div id="gmail-counter"></div>
+    </header> -->
 
-  <script src="scripts/worldMap.js"></script>
-  <script src="scripts/timezones.js"></script>
-  <script src="scripts/main.js"></script>
-</body>
+    <div id="world-map-container">
+      <div id="map"></div>
+      <div id="timezone-list"></div>
+    </div>
+
+    <main>
+      <div id="search-container">
+        <form id="search-form">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search Google or type a URL"
+          />
+        </form>
+      </div>
+
+      <div id="todo-container-parent">
+        <div id="todo-container">
+          <div class="todo-header">
+            <h2>Todo List</h2>
+            <button id="add-todo">+</button>
+          </div>
+          <div id="todo-list"></div>
+          <form id="todo-form">
+            <input type="text" id="new-todo" placeholder="Add a new task" />
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <script src="scripts/config.js"></script>
+    <!-- <script src="scripts/auth/googleAuth.js"></script> -->
+    <!-- <script src="scripts/components/header.js"></script> -->
+    <script src="scripts/components/search.js"></script>
+    <script src="scripts/components/todo.js"></script>
+    <script src="scripts/utils/storage.js"></script>
+    <script src="scripts/worldMap.js"></script>
+    <script src="scripts/timezones.js"></script>
+    <script src="scripts/main.js"></script>
+  </body>
 </html>

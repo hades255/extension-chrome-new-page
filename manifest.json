@@ -1,9 +1,21 @@
 {
   "manifest_version": 3,
-  "name": "World Time Zone Map",
+  "name": "Enhanced New Tab with World Time",
   "version": "1.0",
-  "description": "Displays a world map with time zones on Chrome's new tab page",
-  "permissions": ["storage"],
+  "description": "Enhanced new tab page with world time, Google integration and todo list",
+  "permissions": [
+    "storage",
+    "identity",
+    "identity.email",
+    "topSites"
+  ],
+  "oauth2": {
+    "client_id": "${YOUR_GOOGLE_CLIENT_ID}",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "https://www.googleapis.com/auth/gmail.readonly"
+    ]
+  },
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
