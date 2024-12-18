@@ -1,5 +1,4 @@
-document.addEventListener('DOMContentLoaded', async () => {
-  // Initialize all components
+document.addEventListener("DOMContentLoaded", async () => {
   // await Header.init();
   Search.init();
   await TodoList.init();
