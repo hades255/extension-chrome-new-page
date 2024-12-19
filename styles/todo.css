@@ -7,7 +7,7 @@
 }
 
 #todo-container {
-  background: #EEFE;
+  background: #EEFA;
   width: 100%;
   max-width: 400px;
   max-height: 400px;
@@ -21,7 +21,7 @@
 }
 
 #todo-container:hover{
-  background: #0001002c;
+  background: #EEFE;
 }
 
 .todo-header {
