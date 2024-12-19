@@ -22,7 +22,7 @@
 
 .timezone-item {
   margin-bottom: 4px;
-  padding: 8px;
+  padding: 2px;
   border-radius: 4px;
   text-align: center;
 }
@@ -37,9 +37,14 @@
 .timezone-time {
   color: #475263;
   margin-top: 4px;
-  font-size: larger;
+  font-size: large;
   font-weight: 700;
   text-align: center;
+}
+
+.timezone-date {
+  color: #475263;
+  font-weight: 600;
 }
 
 #map {
