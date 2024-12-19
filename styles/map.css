@@ -11,32 +11,35 @@
 
 #timezone-list {
   position: fixed;
-  top: 64px;
-  right: 0;
-  background: #fff8;
-  padding: 16px;
-  border-radius: 8px;
+  top: 52px;
+  left: 0;
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  padding: 4px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  overflow-y: hidden;
 }
 
 .timezone-item {
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   padding: 8px;
   border-radius: 4px;
-  background: #f8f9fa80;
+  text-align: center;
 }
 
 .timezone-city {
   font-weight: 700;
   font-size: large;
   color: #1a73e8;
+  text-align: center;
 }
 
 .timezone-time {
-  color: #2c3138;
+  color: #475263;
   margin-top: 4px;
   font-size: larger;
+  font-weight: 700;
+  text-align: center;
 }
 
 #map {

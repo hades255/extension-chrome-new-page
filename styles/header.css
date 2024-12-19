@@ -4,8 +4,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding-top: 12px;
+  z-index: 2;
 }
 
 #user-info {
@@ -32,4 +32,18 @@
   text-decoration: none;
   color: white;
   text-shadow: 0 2px 4px #000;
+}
+
+.google-logo-container {
+  display: flex;
+  justify-content: center;
+}
+
+.google-logo {
+  margin: 0 20px;
+  padding-top: 2px;
+  background-image: url(/images/google_logo.svg);
+  width: 140px;
+  height: 46px;
+  background-size: cover;
 }
