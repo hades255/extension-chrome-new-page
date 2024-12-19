@@ -60,12 +60,24 @@ class TodoList {
   }
 
   static async save() {
-    await StorageUtil.set(CONFIG.TODO_STORAGE_KEY, this.todos);
+    await StorageUtil.set(
+      CONFIG.TODO_STORAGE_KEY,
+      this.todos.sort((a, b) => {
+        if (a.completed) return 1;
+        if (b.completed) return -1;
+        return 0;
+      })
+    );
   }
 
   static render() {
     const todoList = document.getElementById("todo-list");
     todoList.innerHTML = this.todos
+      .sort((a, b) => {
+        if (a.completed) return 1;
+        if (b.completed) return -1;
+        return 0;
+      })
       .map(
         (todo) => `
       <div class="todo-item ${todo.completed ? "completed" : ""}" title="${

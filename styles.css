@@ -47,7 +47,6 @@ input:focus {
   -webkit-scrollbar-width: none;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  font-family: "comicneue-light";
 }
 
 ::-webkit-scrollbar {
