@@ -1,5 +1,7 @@
 class TodoList {
   static async init() {
+    this.date = new Date().toISOString().split("T")[0];
+
     this.db = await this.openDB();
     this.todos = (await this.loadTodos()) || [];
     this.render();
@@ -19,6 +21,45 @@ class TodoList {
         this.toggleTodo(e.target.dataset.id);
       }
     });
+
+    document
+      .getElementById("add-todo")
+      .addEventListener("click", async function () {
+        document.getElementById("new-todo").focus();
+      });
+
+    document
+      .getElementById("saveJsonButton")
+      .addEventListener("click", async function () {
+        const jsonData = TodoList.getTodos();
+        const jsonString = JSON.stringify(jsonData, null, 2);
+
+        const blob = new Blob([jsonString], { type: "application/json" });
+
+        const url = URL.createObjectURL(blob);
+
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `todo-${Date.now()}.json`;
+
+        document.body.appendChild(a);
+        a.click();
+
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      });
+
+    document
+      .getElementById("todo-prev")
+      .addEventListener("click", async function () {
+        TodoList.setDate(-1);
+      });
+
+    document
+      .getElementById("todo-next")
+      .addEventListener("click", async function () {
+        TodoList.setDate(1);
+      });
   }
 
   static async openDB() {
@@ -48,8 +89,14 @@ class TodoList {
       );
       const store = transaction.objectStore(CONFIG.TODO_STORAGE_KEY);
       const request = store.getAll();
+      const currentDate = this.date;
       request.onsuccess = function (event) {
-        resolve(event.target.result);
+        const todos = event.target.result;
+        console.log(todos, currentDate);
+        const filteredTodos = todos.filter((todo) =>
+          todo.createdAt.includes(currentDate)
+        );
+        resolve(filteredTodos);
       };
       request.onerror = function (event) {
         reject(event.target.error);
@@ -108,8 +155,19 @@ class TodoList {
     this.render();
   }
 
+  static setDate(diff) {
+    const newDay = new Date(this.date);
+    newDay.setDate(newDay.getDate() + diff);
+    this.date = newDay.toISOString().split("T")[0];
+    this.render();
+  }
+
   static getTodos() {
     return this.todos;
+  }
+
+  static getDate() {
+    return this.date;
   }
 
   static render() {
@@ -135,32 +193,7 @@ class TodoList {
     `
       )
       .join("");
+
+    document.getElementById("todo-date").textContent = this.date;
   }
 }
-
-document
-  .getElementById("add-todo")
-  .addEventListener("click", async function () {
-    document.getElementById("new-todo").focus();
-  });
-
-document
-  .getElementById("saveJsonButton")
-  .addEventListener("click", async function () {
-    const jsonData = TodoList.getTodos();
-    const jsonString = JSON.stringify(jsonData, null, 2);
-
-    const blob = new Blob([jsonString], { type: "application/json" });
-
-    const url = URL.createObjectURL(blob);
-
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `todo-${Date.now()}.json`;
-
-    document.body.appendChild(a);
-    a.click();
-
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  });

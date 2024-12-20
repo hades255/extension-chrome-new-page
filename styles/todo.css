@@ -1,4 +1,4 @@
-#todo-container-parent{
+#todo-container-parent {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,7 +7,7 @@
 }
 
 #todo-container {
-  background: #EEFA;
+  background: #eefa;
   width: 100%;
   max-width: 400px;
   max-height: 400px;
@@ -20,8 +20,8 @@
   box-shadow: 1px 2px 4px #0008;
 }
 
-#todo-container:hover{
-  background: #EEFE;
+#todo-container:hover {
+  background: #eefe;
 }
 
 .todo-header {
@@ -31,7 +31,25 @@
   margin-bottom: 16px;
 }
 
-#todo-list{
+.todo-tools {
+  display: flex;
+  gap: 2px;
+}
+
+.todo-tools button {
+  min-width: 32px;
+  min-height: 24px;
+  text-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.todo-tools button.active {
+  color: white;
+  background-color: #666;
+}
+
+#todo-list {
   height: 100%;
   min-height: 200px;
   overflow-y: auto;

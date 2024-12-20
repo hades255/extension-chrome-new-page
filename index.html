@@ -51,8 +51,12 @@
         <canvas id="analog-clock"></canvas>
         <div id="todo-container">
           <div class="todo-header">
-            <h2>Todo List</h2>
-            <div>
+            <h2>Todo List <span id="todo-date"></span></h2>
+            <div class="todo-tools">
+              <button id="todo-filter-checked">&check;</button>
+              <button id="todo-filter-nonChecked">&square;</button>
+              <button id="todo-prev">&lt;</button>
+              <button id="todo-next">&gt;</button>
               <button id="add-todo">+</button>
               <button id="saveJsonButton">Export</button>
             </div>
