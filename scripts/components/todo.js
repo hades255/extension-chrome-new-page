@@ -60,6 +60,12 @@ class TodoList {
       .addEventListener("click", async function () {
         TodoList.setDate(1);
       });
+
+    document
+      .getElementById("todo-today")
+      .addEventListener("click", async function () {
+        TodoList.setDate(0);
+      });
   }
 
   static async openDB() {
@@ -155,10 +161,14 @@ class TodoList {
     this.render();
   }
 
-  static setDate(diff) {
-    const newDay = new Date(this.date);
-    newDay.setDate(newDay.getDate() + diff);
-    this.date = newDay.toISOString().split("T")[0];
+  static async setDate(diff) {
+    if (diff === 0) this.date = new Date().toISOString().split("T")[0];
+    else {
+      const newDay = new Date(this.date);
+      newDay.setDate(newDay.getDate() + diff);
+      this.date = newDay.toISOString().split("T")[0];
+    }
+    this.todos = (await this.loadTodos()) || [];
     this.render();
   }
 
