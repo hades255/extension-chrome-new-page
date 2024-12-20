@@ -98,7 +98,6 @@ class TodoList {
       const currentDate = this.date;
       request.onsuccess = function (event) {
         const todos = event.target.result;
-        console.log(todos, currentDate);
         const filteredTodos = todos.filter((todo) =>
           todo.createdAt.includes(currentDate)
         );
@@ -124,7 +123,7 @@ class TodoList {
     const todo = {
       text,
       completed: false,
-      createdAt: new Date().toISOString(),
+      createdAt: this.date + new Date().toISOString().split("T")[1],
     };
     const transaction = this.db.transaction(
       CONFIG.TODO_STORAGE_KEY,
