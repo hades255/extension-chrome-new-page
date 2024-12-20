@@ -1,6 +1,7 @@
 class TodoList {
   static async init() {
-    this.todos = (await StorageUtil.get(CONFIG.TODO_STORAGE_KEY)) || [];
+    this.db = await this.openDB();
+    this.todos = (await this.loadTodos()) || [];
     this.render();
     this.initListeners();
   }
@@ -18,6 +19,70 @@ class TodoList {
         this.toggleTodo(e.target.dataset.id);
       }
     });
+
+    document
+      .getElementById("saveJsonButton")
+      .addEventListener("click", async function () {
+        const jsonData = (await StorageUtil.get(CONFIG.TODO_STORAGE_KEY)) || [];
+
+        const jsonString = JSON.stringify(jsonData, null, 2);
+
+        const blob = new Blob([jsonString], { type: "application/json" });
+
+        const url = URL.createObjectURL(blob);
+
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `todo-${Date.now()}.json`;
+
+        document.body.appendChild(a);
+        a.click();
+
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      });
+
+    document
+      .getElementById("add-todo")
+      .addEventListener("click", async function () {
+        document.getElementById("new-todo").focus();
+      });
+  }
+
+  static async openDB() {
+    return new Promise((resolve, reject) => {
+      const request = indexedDB.open("todoDB", 1);
+      request.onupgradeneeded = function (event) {
+        const db = event.target.result;
+        db.createObjectStore(CONFIG.TODO_STORAGE_KEY, {
+          keyPath: "id",
+          autoIncrement: true,
+        });
+      };
+      request.onsuccess = function (event) {
+        resolve(event.target.result);
+      };
+      request.onerror = function (event) {
+        reject(event.target.error);
+      };
+    });
+  }
+
+  static async loadTodos() {
+    return new Promise((resolve, reject) => {
+      const transaction = this.db.transaction(
+        CONFIG.TODO_STORAGE_KEY,
+        "readonly"
+      );
+      const store = transaction.objectStore(CONFIG.TODO_STORAGE_KEY);
+      const request = store.getAll();
+      request.onsuccess = function (event) {
+        resolve(event.target.result);
+      };
+      request.onerror = function (event) {
+        reject(event.target.error);
+      };
+    });
   }
 
   static async addTodo() {
@@ -32,42 +97,43 @@ class TodoList {
     }
 
     const todo = {
-      id: Date.now(),
       text,
       completed: false,
       createdAt: new Date().toISOString(),
     };
-
-    this.todos.unshift(todo);
-    await this.save();
+    const transaction = this.db.transaction(
+      CONFIG.TODO_STORAGE_KEY,
+      "readwrite"
+    );
+    const store = transaction.objectStore(CONFIG.TODO_STORAGE_KEY);
+    store.add(todo);
+    this.todos = await this.loadTodos();
     this.render();
     input.value = "";
   }
 
   static async deleteTodo(id) {
-    this.todos = this.todos.filter((todo) => todo.id !== Number(id));
-    await this.save();
+    const transaction = this.db.transaction(
+      CONFIG.TODO_STORAGE_KEY,
+      "readwrite"
+    );
+    const store = transaction.objectStore(CONFIG.TODO_STORAGE_KEY);
+    store.delete(Number(id));
+    this.todos = await this.loadTodos();
     this.render();
   }
 
   static async toggleTodo(id) {
-    const todo = this.todos.find((todo) => todo.id === Number(id));
-    if (todo) {
-      todo.completed = !todo.completed;
-      await this.save();
-      this.render();
-    }
-  }
-
-  static async save() {
-    await StorageUtil.set(
+    const transaction = this.db.transaction(
       CONFIG.TODO_STORAGE_KEY,
-      this.todos.sort((a, b) => {
-        if (a.completed) return 1;
-        if (b.completed) return -1;
-        return 0;
-      })
+      "readwrite"
     );
+    const store = transaction.objectStore(CONFIG.TODO_STORAGE_KEY);
+    const todo = this.todos.find((todo) => todo.id === Number(id));
+    todo.completed = !todo.completed;
+    store.put(todo);
+    this.todos = await this.loadTodos();
+    this.render();
   }
 
   static render() {
@@ -95,31 +161,3 @@ class TodoList {
       .join("");
   }
 }
-
-document
-  .getElementById("saveJsonButton")
-  .addEventListener("click", async function () {
-    const jsonData = (await StorageUtil.get(CONFIG.TODO_STORAGE_KEY)) || [];
-
-    const jsonString = JSON.stringify(jsonData, null, 2);
-
-    const blob = new Blob([jsonString], { type: "application/json" });
-
-    const url = URL.createObjectURL(blob);
-
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `todo-${Date.now()}.json`;
-
-    document.body.appendChild(a);
-    a.click();
-
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  });
-
-document
-  .getElementById("add-todo")
-  .addEventListener("click", async function () {
-    document.getElementById("new-todo").focus();
-  });
