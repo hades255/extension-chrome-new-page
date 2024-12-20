@@ -6,7 +6,7 @@ class TodoList {
     this.initListeners();
   }
 
-  static initListeners() {
+  static async initListeners() {
     document.getElementById("todo-form").addEventListener("submit", (e) => {
       e.preventDefault();
       this.addTodo();
@@ -19,34 +19,6 @@ class TodoList {
         this.toggleTodo(e.target.dataset.id);
       }
     });
-
-    document
-      .getElementById("saveJsonButton")
-      .addEventListener("click", async function () {
-        const jsonData = (await StorageUtil.get(CONFIG.TODO_STORAGE_KEY)) || [];
-
-        const jsonString = JSON.stringify(jsonData, null, 2);
-
-        const blob = new Blob([jsonString], { type: "application/json" });
-
-        const url = URL.createObjectURL(blob);
-
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = `todo-${Date.now()}.json`;
-
-        document.body.appendChild(a);
-        a.click();
-
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-      });
-
-    document
-      .getElementById("add-todo")
-      .addEventListener("click", async function () {
-        document.getElementById("new-todo").focus();
-      });
   }
 
   static async openDB() {
@@ -136,6 +108,10 @@ class TodoList {
     this.render();
   }
 
+  static getTodos() {
+    return this.todos;
+  }
+
   static render() {
     const todoList = document.getElementById("todo-list");
     todoList.innerHTML = this.todos
@@ -161,3 +137,30 @@ class TodoList {
       .join("");
   }
 }
+
+document
+  .getElementById("add-todo")
+  .addEventListener("click", async function () {
+    document.getElementById("new-todo").focus();
+  });
+
+document
+  .getElementById("saveJsonButton")
+  .addEventListener("click", async function () {
+    const jsonData = TodoList.getTodos();
+    const jsonString = JSON.stringify(jsonData, null, 2);
+
+    const blob = new Blob([jsonString], { type: "application/json" });
+
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `todo-${Date.now()}.json`;
+
+    document.body.appendChild(a);
+    a.click();
+
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  });
