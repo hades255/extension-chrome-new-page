@@ -143,7 +143,7 @@ function drawTicks(context) {
 }
 
 function drawSecHand(context,ang) {
-  drawPath(context, 'M -50,0 L -45,-5 -25,-5 -22,-2 22,-2 25,-5 180,0 25,5 22,2 -22,2 -25,5 -45,5 Z', '#555', ang);
+  drawPath(context, 'M -50,0 L -45,-5 -25,-5 -22,-2 22,-2 25,-5 180,0 25,5 22,2 -22,2 -25,5 -45,5 Z', '#333', ang);
   context.beginPath();
   context.arc(0, 0, 8, 0, 2 * Math.PI);
   context.fillStyle = '#333';
@@ -152,11 +152,11 @@ function drawSecHand(context,ang) {
 }
 
 function drawMinHand(context,ang) {
-  drawPath(context, 'M 0,0 L 1,-2 20,-2 22,-5 122,-5 124,-2 146,-2 168,0 146,2 124,2 122,5 22,5 20,2 1,2 0,0 24,0 24,2 120,2 122,0 120,-2 24,-2 24,0 Z', '#111', ang);
+  drawPath(context, 'M 0,0 L 1,-2 20,-2 22,-5 122,-5 124,-2 146,-2 168,0 146,2 124,2 122,5 22,5 20,2 1,2 0,0 24,0 24,2 120,2 122,0 120,-2 24,-2 24,0 Z', '#113', ang);
 }
 
 function drawHourHand(context,ang) {
-  drawPath(context, 'M 0,0 L 1,-3 14,-3 17,-7 97,-7 100,-3 112,-2 134,0 112,2 100,3 97,7 17,7 14,3 1,3 0,0 18,0 21,3 94,3 96,0 94,-3 21,-3 18,0 Z', '#000', ang);
+  drawPath(context, 'M 0,0 L 1,-3 14,-3 17,-7 97,-7 100,-3 112,-2 134,0 112,2 100,3 97,7 17,7 14,3 1,3 0,0 18,0 21,3 94,3 96,0 94,-3 21,-3 18,0 Z', '#003', ang);
 }
         
 function drawPath(context,path,fill,ang) {

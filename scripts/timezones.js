@@ -14,7 +14,7 @@ const timeZones = [
   { city: "New York", zone: "America/New_York" },
   { city: "London", zone: "Europe/London" },
   { city: "Berlin", zone: "Europe/Berlin" },
-  { city: "Moscow", zone: "Europe/Moscow" },
+  { city: "Kiev", zone: "Europe/Kiev" },
   { city: "Dubai", zone: "Asia/Dubai" },
   { city: "New Delhi", zone: "Asia/Kolkata" },
   { city: "Beijing", zone: "Asia/Shanghai" },
