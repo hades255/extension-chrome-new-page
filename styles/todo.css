@@ -13,12 +13,11 @@
   max-width: 400px;
   max-height: 400px;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  box-shadow: 1px 2px 4px #0008;
+  box-shadow: 0 1px 8px #0008;
 }
 
 #todo-container:hover {
