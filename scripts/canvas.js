@@ -33,9 +33,9 @@ function Clock() {
 
   context.translate(250, 250);
   drawTicks(context);
-  drawHourHand(context, hourAngle);
-  drawMinHand(context, minAngle);
   drawSecHand(context, secAngle);
+  drawMinHand(context, minAngle);
+  drawHourHand(context, hourAngle);
   context.translate(-250, -250);
 
   setTimeout(Clock, 31);
@@ -63,12 +63,12 @@ function drawFace(context) {
 }
 
 function drawTicks(context) {
-  drawPath(context, 'M -108,-1 L 108,-1 108,1 -108,1 Z', 'lightgrey', 0);
-  drawPath(context, 'M -108,-1 L 108,-1 108,1 -108,1 Z', 'lightgrey', 30);
-  drawPath(context, 'M -108,-1 L 108,-1 108,1 -108,1 Z', 'lightgrey', 60);
-  drawPath(context, 'M -108,-1 L 108,-1 108,1 -108,1 Z', 'lightgrey', 90);
-  drawPath(context, 'M -108,-1 L 108,-1 108,1 -108,1 Z', 'lightgrey', 120);
-  drawPath(context, 'M -108,-1 L 108,-1 108,1 -108,1 Z', 'lightgrey', 150);
+  drawPath(context, 'M -108,-1 L 108,-1 108,1 -108,1 Z', 'grey', 0);
+  drawPath(context, 'M -108,-1 L 108,-1 108,1 -108,1 Z', 'grey', 30);
+  drawPath(context, 'M -108,-1 L 108,-1 108,1 -108,1 Z', 'grey', 60);
+  drawPath(context, 'M -108,-1 L 108,-1 108,1 -108,1 Z', 'grey', 90);
+  drawPath(context, 'M -108,-1 L 108,-1 108,1 -108,1 Z', 'grey', 120);
+  drawPath(context, 'M -108,-1 L 108,-1 108,1 -108,1 Z', 'grey', 150);
 
   drawPath(context, 'M 154,0 L 178,-6 178,6 Z', 'black', 0);
   drawPath(context, 'M 154,0 L 178,-6 178,6 Z', 'black', 90);

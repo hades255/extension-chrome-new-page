@@ -4,10 +4,11 @@
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
+  margin: 8px;
 }
 
 #todo-container {
-  background: #eefa;
+  background: rgb(245, 245, 255);
   width: 100%;
   max-width: 400px;
   max-height: 400px;
@@ -22,6 +23,12 @@
 
 #todo-container:hover {
   background: #eefe;
+}
+
+#todo-date{
+  font-weight: bold;
+  font-size: 20px;
+  color: #222;
 }
 
 .todo-header {
@@ -61,7 +68,7 @@
   padding: 8px 0;
   border-bottom: 1px solid #eee;
   font-size: medium;
-  color: #363;
+  color: rgb(22, 75, 22);
   font-weight: 600;
 }
 
@@ -72,6 +79,8 @@
 
 .todo-checkbox {
   margin-right: 12px;
+  width: 16px;
+  height: 16px;
 }
 
 .delete-todo {

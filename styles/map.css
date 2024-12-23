@@ -52,5 +52,5 @@
   height: 100vh;
   background: url("/images/world-map.svg") no-repeat center center;
   background-size: contain;
-  opacity: 0.4;
+  opacity: 0.6;
 }

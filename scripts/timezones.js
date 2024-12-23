@@ -1,13 +1,3 @@
-// const timeZones = [
-//   { city: "Los Angeles", zone: "America/Los_Angeles" },
-//   { city: "New York", zone: "America/New_York" },
-//   { city: "London", zone: "Europe/London" },
-//   { city: "Paris", zone: "Europe/Paris" },
-//   { city: "Dubai", zone: "Asia/Dubai" },
-//   { city: "Tokyo", zone: "Asia/Tokyo" },
-//   { city: "Sydney", zone: "Australia/Sydney" },
-//   // Add more major cities and their timezones
-// ];
 const timeZones = [
   { city: "Los Angeles", zone: "America/Los_Angeles" },
   { city: "Chicago", zone: "America/Chicago" },
@@ -53,6 +43,5 @@ function updateTimes() {
   });
 }
 
-// Update times every minute
 setInterval(updateTimes, 60000);
-updateTimes(); // Initial update
+updateTimes();

@@ -1,10 +1,10 @@
 @keyframes background-color {
   0%,
   100% {
-    background: #f0f2f5;
+    background: #8496e76c;
   }
   50% {
-    background: #9aa0ac;
+    background: #6bcfc754;
   }
 }
 
@@ -15,6 +15,7 @@ body {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   background: #f0f2f5;
   animation: infinite background-color 10s;
+  font-family: sans-serif;
 }
 
 #chrome-content {

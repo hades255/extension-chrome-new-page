@@ -1,6 +1,6 @@
 class TodoList {
   static async init() {
-    this.date = new Date().toISOString().split("T")[0];
+    this.date = new Date().toLocaleDateString();
 
     this.db = await this.openDB();
     this.todos = (await this.loadTodos()) || [];
@@ -123,7 +123,7 @@ class TodoList {
     const todo = {
       text,
       completed: false,
-      createdAt: this.date + new Date().toISOString().split("T")[1],
+      createdAt: this.date + new Date().toLocaleTimeString(),
     };
     const transaction = this.db.transaction(
       CONFIG.TODO_STORAGE_KEY,
@@ -161,11 +161,11 @@ class TodoList {
   }
 
   static async setDate(diff) {
-    if (diff === 0) this.date = new Date().toISOString().split("T")[0];
+    if (diff === 0) this.date = new Date().toLocaleDateString();
     else {
       const newDay = new Date(this.date);
       newDay.setDate(newDay.getDate() + diff);
-      this.date = newDay.toISOString().split("T")[0];
+      this.date = newDay.toLocaleDateString();
     }
     this.todos = (await this.loadTodos()) || [];
     this.render();
@@ -203,6 +203,8 @@ class TodoList {
       )
       .join("");
 
-    document.getElementById("todo-date").textContent = this.date;
+    document.getElementById("todo-date").textContent = new Date(
+      this.date
+    ).toDateString();
   }
 }
