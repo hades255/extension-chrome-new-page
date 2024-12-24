@@ -24,7 +24,7 @@
   background: #eefe;
 }
 
-#todo-date{
+#todo-date {
   font-weight: bold;
   font-size: 20px;
   color: #222;
@@ -67,13 +67,26 @@
   padding: 8px 0;
   border-bottom: 1px solid #eee;
   font-size: medium;
-  color: rgb(22, 75, 22);
   font-weight: 600;
 }
 
-.todo-item.completed .todo-text {
+.todo-item.completed :where(.todo-text,.todo-item-date) {
   text-decoration: line-through;
   color: #888;
+}
+
+.todo-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.todo-text {
+  color: rgb(22, 75, 22);
+}
+
+.todo-item-date {
+  color: rgb(77, 83, 77);
+  font-size: small;
 }
 
 .todo-checkbox {

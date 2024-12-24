@@ -95,13 +95,9 @@ class TodoList {
       );
       const store = transaction.objectStore(CONFIG.TODO_STORAGE_KEY);
       const request = store.getAll();
-      const currentDate = this.date;
       request.onsuccess = function (event) {
         const todos = event.target.result;
-        const filteredTodos = todos.filter((todo) =>
-          todo.createdAt.includes(currentDate)
-        );
-        resolve(filteredTodos);
+        resolve(todos);
       };
       request.onerror = function (event) {
         reject(event.target.error);
@@ -123,7 +119,7 @@ class TodoList {
     const todo = {
       text,
       completed: false,
-      createdAt: this.date + new Date().toLocaleTimeString(),
+      createdAt: this.date + " " + new Date().toLocaleTimeString(),
     };
     const transaction = this.db.transaction(
       CONFIG.TODO_STORAGE_KEY,
@@ -181,27 +177,64 @@ class TodoList {
 
   static render() {
     const todoList = document.getElementById("todo-list");
-    todoList.innerHTML = this.todos
-      .sort((a, b) => {
-        if (a.completed) return 1;
-        if (b.completed) return -1;
-        return 0;
-      })
-      .map(
-        (todo) => `
-      <div class="todo-item ${todo.completed ? "completed" : ""}" title="${
-          todo.createdAt
-        }">
-        <input type="checkbox" 
-               class="todo-checkbox" 
-               data-id="${todo.id}" 
-               ${todo.completed ? "checked" : ""}>
-        <span class="todo-text">${todo.text}</span>
-        <button class="delete-todo" data-id="${todo.id}">×</button>
-      </div>
-    `
-      )
-      .join("");
+
+    const currentDate = this.date;
+    const todayTodos = this.todos.filter((todo) =>
+      todo.createdAt.includes(currentDate)
+    );
+    const otherTodos = this.todos.filter(
+      (todo) => !todo.createdAt.includes(currentDate)
+    );
+
+    todoList.innerHTML =
+      todayTodos
+        .sort((a, b) => {
+          if (a.completed) return 1;
+          if (b.completed) return -1;
+          return 0;
+        })
+        .map(
+          (todo) => `
+          <div class="todo-item ${todo.completed ? "completed" : ""}" title="${
+            todo.createdAt
+          }">
+            <input type="checkbox" 
+                  class="todo-checkbox" 
+                  data-id="${todo.id}" 
+                  ${todo.completed ? "checked" : ""}>
+            <span class="todo-text">${todo.text}</span>
+            <button class="delete-todo" data-id="${todo.id}">×</button>
+          </div>
+        `
+        )
+        .join("") +
+      `<hr></hr>` +
+      otherTodos
+        .sort((a, b) => {
+          if (a.completed) return 1;
+          if (b.completed) return -1;
+          return 0;
+        })
+        .map(
+          (todo) => `
+          <div class="todo-item ${todo.completed ? "completed" : ""}" title="${
+            todo.createdAt
+          }">
+            <input type="checkbox" 
+                  class="todo-checkbox" 
+                  data-id="${todo.id}" 
+                  ${todo.completed ? "checked" : ""}>
+            <div class="todo-content">
+              <span class="todo-text">${todo.text}</span>
+              <span class="todo-item-date">${new Date(
+                todo.createdAt
+              ).toLocaleString()}</span>
+            </div>
+            <button class="delete-todo" data-id="${todo.id}">×</button>
+          </div>
+        `
+        )
+        .join("");
 
     document.getElementById("todo-date").textContent = new Date(
       this.date
