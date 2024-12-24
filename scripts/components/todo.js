@@ -187,17 +187,19 @@ class TodoList {
     );
 
     todoList.innerHTML =
-      todayTodos
-        .sort((a, b) => {
-          if (a.completed) return 1;
-          if (b.completed) return -1;
-          return 0;
-        })
-        .map(
-          (todo) => `
+      (todayTodos.length === 0
+        ? `<div>No todos this day</div>`
+        : todayTodos
+            .sort((a, b) => {
+              if (a.completed) return 1;
+              if (b.completed) return -1;
+              return 0;
+            })
+            .map(
+              (todo) => `
           <div class="todo-item ${todo.completed ? "completed" : ""}" title="${
-            todo.createdAt
-          }">
+                todo.createdAt
+              }">
             <input type="checkbox" 
                   class="todo-checkbox" 
                   data-id="${todo.id}" 
@@ -206,8 +208,8 @@ class TodoList {
             <button class="delete-todo" data-id="${todo.id}">×</button>
           </div>
         `
-        )
-        .join("") +
+            )
+            .join("")) +
       `<hr></hr>` +
       otherTodos
         .sort((a, b) => {

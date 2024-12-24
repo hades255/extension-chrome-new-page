@@ -9,15 +9,22 @@
     "identity.email",
     "topSites"
   ],
+  "host_permissions": [
+    "https://www.googleapis.com/*"
+  ],
   "oauth2": {
-    "client_id": "${YOUR_GOOGLE_CLIENT_ID}",
+    "client_id": "",
     "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
       "https://www.googleapis.com/auth/userinfo.email",
       "https://www.googleapis.com/auth/gmail.readonly"
     ]
   },
   "chrome_url_overrides": {
     "newtab": "index.html"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
   },
   "icons": {
     "16": "icons/icon16.png",
