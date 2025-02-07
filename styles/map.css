@@ -42,6 +42,11 @@
   text-align: center;
 }
 
+.timezone-item .bold {
+  font-weight: 900;
+  color: red;
+}
+
 .timezone-date {
   color: #475263;
   font-weight: 600;

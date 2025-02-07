@@ -4394,7 +4394,7 @@
 	<path style="fill:#000100a0;" d="M104.71,135.026c0.182,0,0.33-0.148,0.33-0.33c0-0.183-0.148-0.33-0.33-0.33
 		c-0.182,0-0.33,0.148-0.33,0.33C104.379,134.878,104.527,135.026,104.71,135.026z"/>
 	<circle style="fill:#000100a0;" cx="103.891" cy="133.574" r="0.33"/>
-	<circle style="fill:#000100a0;" cx="103.099" cy="132.433" r="0.33"/>
+	<circle style="fill:#333;" cx="103.099" cy="132.433" r="1.2"/>
 	<path style="fill:#000100a0;" d="M102.335,131.603c0.183,0,0.33-0.148,0.33-0.33c0-0.182-0.148-0.33-0.33-0.33
 		c-0.182,0-0.33,0.148-0.33,0.33C102.005,131.455,102.153,131.603,102.335,131.603z"/>
 	<path style="fill:#000100a0;" d="M101.6,130.425c0.183,0,0.33-0.148,0.33-0.33c0-0.183-0.148-0.33-0.33-0.33
@@ -14624,6 +14624,7 @@
 	<text style="fill:#333;font: bold 6px sans-serif" x="30" y="94">Los Angeles</text>
 	<text style="fill:#333;font: bold 6px sans-serif" x="60" y="76">Chicago</text>
 	<text style="fill:#333;font: bold 6px sans-serif" x="73" y="91">New York</text>
+	<text style="fill:#333;font: bold 6px sans-serif" x="98" y="140">Brasilia</text>
 	<text style="fill:#333;font: bold 6px sans-serif" x="130" y="74">London</text>
 	<text style="fill:#333;font: bold 6px sans-serif" x="143" y="64">Berlin</text>
 	<text style="fill:#333;font: bold 6px sans-serif" x="165" y="80">Kiev</text>
