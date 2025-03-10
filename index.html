@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="styles/search.css" />
     <link rel="stylesheet" href="styles/todo.css" />
     <link rel="stylesheet" href="styles/map.css" />
+    <link rel="stylesheet" href="styles/calendar.css" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -47,6 +48,8 @@
         </form>
       </div>
 
+      <div id="calendar-container"></div>
+
       <div id="todo-container-parent">
         <canvas id="analog-clock"></canvas>
         <div id="todo-container">
@@ -76,6 +79,9 @@
     <script src="scripts/worldMap.js"></script>
     <script src="scripts/timezones.js"></script>
     <script src="scripts/canvas.js"></script>
+    <script src="scripts/components/calendar.js"></script>
+    <script src="scripts/components/eventModal.js"></script>
+    <script src="scripts/db/indexDB.js"></script>
     <script src="scripts/main.js"></script>
   </body>
 </html>
