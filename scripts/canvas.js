@@ -75,14 +75,14 @@ function drawTicks(context) {
   drawPath(context, 'M 154,0 L 178,-6 178,6 Z', 'black', 180);
   drawPath(context, 'M 154,0 L 178,-6 178,6 Z', 'black', -90);
 
-  drawPath(context, 'M 156,-2 L 180,-2 180,2 156,2 Z', '#444', 30);
-  drawPath(context, 'M 156,-2 L 180,-2 180,2 156,2 Z', '#444', 60);
-  drawPath(context, 'M 156,-2 L 180,-2 180,2 156,2 Z', '#444', 120);
-  drawPath(context, 'M 156,-2 L 180,-2 180,2 156,2 Z', '#444', 150);
-  drawPath(context, 'M 156,-2 L 180,-2 180,2 156,2 Z', '#444', -30);
-  drawPath(context, 'M 156,-2 L 180,-2 180,2 156,2 Z', '#444', -60);
-  drawPath(context, 'M 156,-2 L 180,-2 180,2 156,2 Z', '#444', -120);
-  drawPath(context, 'M 156,-2 L 180,-2 180,2 156,2 Z', '#444', -150);
+  drawPath(context, 'M 156,-2 L 180,-2 180,2 156,2 Z', '#222', 30);
+  drawPath(context, 'M 156,-2 L 180,-2 180,2 156,2 Z', '#222', 60);
+  drawPath(context, 'M 156,-2 L 180,-2 180,2 156,2 Z', '#222', 120);
+  drawPath(context, 'M 156,-2 L 180,-2 180,2 156,2 Z', '#222', 150);
+  drawPath(context, 'M 156,-2 L 180,-2 180,2 156,2 Z', '#222', -30);
+  drawPath(context, 'M 156,-2 L 180,-2 180,2 156,2 Z', '#222', -60);
+  drawPath(context, 'M 156,-2 L 180,-2 180,2 156,2 Z', '#222', -120);
+  drawPath(context, 'M 156,-2 L 180,-2 180,2 156,2 Z', '#222', -150);
 
   context.font = '24pt Georgia';
   context.textAlign = 'center';
