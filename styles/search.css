@@ -3,6 +3,7 @@
   margin-top: 160px;
   padding-left: 20px;
   padding-right: 20px;
+  z-index: 2;
 }
 
 #search-input {
@@ -17,6 +18,16 @@
   transition: box-shadow 0.2s;
   font-weight: bold;
   box-shadow: 0 1px 8px #0008;
+  background-color: transparent;
+  transition: all ease-in-out 0.3s;
+}
+
+#search-input:hover {
+  background-color: #fffa;
+}
+
+#search-input:focus {
+  background-color: #fff;
 }
 
 @media screen and (max-width: 584px) {

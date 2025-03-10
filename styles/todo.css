@@ -8,7 +8,7 @@
 }
 
 #todo-container {
-  background: rgb(245, 245, 255);
+  background: rgba(245, 245, 255, 0.2);
   width: 100%;
   max-width: 400px;
   max-height: 400px;
@@ -18,10 +18,11 @@
   flex-direction: column;
   justify-content: space-around;
   box-shadow: 0 1px 8px #0008;
+  z-index: 2;
 }
 
 #todo-container:hover {
-  background: #eefe;
+  background: #eef8;
 }
 
 #todo-date {
@@ -48,6 +49,8 @@
   text-align: center;
   align-items: center;
   cursor: pointer;
+  background-color: transparent;
+  border: 1px solid gray;
 }
 
 .todo-tools button.active {
@@ -70,7 +73,7 @@
   font-weight: 600;
 }
 
-.todo-item.completed :where(.todo-text,.todo-item-date) {
+.todo-item.completed :where(.todo-text, .todo-item-date) {
   text-decoration: line-through;
   color: #888;
 }
@@ -92,6 +95,7 @@
 .todo-checkbox {
   margin-right: 12px;
   width: 16px;
+  min-width: 16px;
   height: 16px;
 }
 
@@ -113,6 +117,7 @@
   width: 90%;
   padding: 8px;
   border: 1px solid #ddd;
+  background-color: transparent;
   border-radius: 4px;
   outline: none;
 }

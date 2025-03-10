@@ -46,7 +46,7 @@ function drawFace(context) {
 
   grad = context.createRadialGradient(20,30,200,100,100,450);
   grad.addColorStop(0, '#0002');
-  grad.addColorStop(0.5, '#CCCa');
+  grad.addColorStop(0.5, '#fffa');
   grad.addColorStop(1, '#0002');
 
   context.beginPath();
@@ -57,7 +57,7 @@ function drawFace(context) {
 
   context.beginPath();
   context.arc(250, 250, 212, 0, 2 * Math.PI);
-  context.fillStyle = '#EEFE';
+  context.fillStyle = '#EEFA';
   context.fill();
   context.closePath();
 }
