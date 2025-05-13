@@ -97,6 +97,7 @@ class TodoList {
       const request = store.getAll();
       request.onsuccess = function (event) {
         const todos = event.target.result;
+        todos.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
         resolve(todos);
       };
       request.onerror = function (event) {

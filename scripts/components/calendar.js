@@ -18,7 +18,7 @@ class Calendar {
     this.container.appendChild(buttonsContainer);
 
     this.renderGrid();
-    this.renderEvents();
+    // this.renderEvents(); //  todo  ?
   }
 
   renderViewButtons(buttonsContainer) {
@@ -190,7 +190,7 @@ class Calendar {
     for (let i = 0; i < 24; i++) {
       const hour = document.createElement("div");
       hour.className = "hour";
-      hour.textContent = `${i}:00`;
+      hour.textContent = `${i}`;
       grid.appendChild(hour);
     }
   }
@@ -281,7 +281,7 @@ class Calendar {
         this.getPositionFromTime(event.start)
       }px`;
       eventElement.addEventListener("click", () => this.showEventModal(event));
-      this.container.querySelector(".calendar-grid").appendChild(eventElement);
+      this.container.appendChild(eventElement);
     });
   }
 
