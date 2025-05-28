@@ -88,6 +88,7 @@ class TodoList {
   }
 
   static async loadTodos() {
+    console.log(this.date)
     return new Promise((resolve, reject) => {
       const transaction = this.db.transaction(
         CONFIG.TODO_STORAGE_KEY,
@@ -97,9 +98,21 @@ class TodoList {
       const request = store.getAll();
       request.onsuccess = function (event) {
         const todos = event.target.result;
-        todos.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-        resolve(todos);
-      };
+        // Calculate date range
+        const oneWeekInMs = 15 * 24 * 60 * 60 * 1000;
+        const startDate = new Date(new Date(this.date).getTime() - oneWeekInMs);
+        const endDate = new Date(new Date(this.date).getTime() + oneWeekInMs);
+        
+        // Filter todos within date range
+        const filteredTodos = todos.filter(todo => {
+          const todoDate = new Date(todo.createdAt);
+          return todoDate >= startDate && todoDate <= endDate;
+        });
+        
+        // Sort by date
+        filteredTodos.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        resolve(filteredTodos);
+      }.bind(this);
       request.onerror = function (event) {
         reject(event.target.error);
       };
