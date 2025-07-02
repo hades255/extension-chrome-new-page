@@ -30,7 +30,28 @@ class TodoList {
 
     document
       .getElementById("saveJsonButton")
-      .addEventListener("click", async function () {
+      ?.addEventListener("click", async function () {
+        const jsonData = await TodoList.loadAllTodos();
+        const jsonString = JSON.stringify(jsonData, null, 2);
+
+        const blob = new Blob([jsonString], { type: "application/json" });
+
+        const url = URL.createObjectURL(blob);
+
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `todo-${Date.now()}.json`;
+
+        document.body.appendChild(a);
+        a.click();
+
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      });
+
+    document
+      .getElementById("loadJsonButton")
+      ?.addEventListener("click", async function () {
         const jsonData = TodoList.getTodos();
         const jsonString = JSON.stringify(jsonData, null, 2);
 
@@ -88,7 +109,6 @@ class TodoList {
   }
 
   static async loadTodos() {
-    console.log(this.date)
     return new Promise((resolve, reject) => {
       const transaction = this.db.transaction(
         CONFIG.TODO_STORAGE_KEY,
@@ -102,16 +122,40 @@ class TodoList {
         const oneWeekInMs = 15 * 24 * 60 * 60 * 1000;
         const startDate = new Date(new Date(this.date).getTime() - oneWeekInMs);
         const endDate = new Date(new Date(this.date).getTime() + oneWeekInMs);
-        
+
         // Filter todos within date range
-        const filteredTodos = todos.filter(todo => {
+        const filteredTodos = todos.filter((todo) => {
           const todoDate = new Date(todo.createdAt);
-          return todoDate >= startDate && todoDate <= endDate;
+          return (
+            !todo.completed || (todoDate >= startDate && todoDate <= endDate)
+          );
         });
-        
+
         // Sort by date
-        filteredTodos.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        filteredTodos.sort(
+          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+        );
         resolve(filteredTodos);
+      }.bind(this);
+      request.onerror = function (event) {
+        reject(event.target.error);
+      };
+    });
+  }
+
+  static async loadAllTodos() {
+    return new Promise((resolve, reject) => {
+      const transaction = this.db.transaction(
+        CONFIG.TODO_STORAGE_KEY,
+        "readonly"
+      );
+      const store = transaction.objectStore(CONFIG.TODO_STORAGE_KEY);
+      const request = store.getAll();
+      request.onsuccess = function (event) {
+        const todos = event.target.result;
+        // Sort by date
+        todos.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        resolve(todos);
       }.bind(this);
       request.onerror = function (event) {
         reject(event.target.error);
