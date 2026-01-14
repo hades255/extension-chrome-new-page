@@ -5,4 +5,5 @@ document.addEventListener("DOMContentLoaded", async () => {
   initCalendar();
   initWorldMap();
   updateTimes();
+  initBookmarkBar();
 });

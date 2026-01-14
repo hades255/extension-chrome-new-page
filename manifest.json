@@ -7,7 +7,8 @@
     "storage",
     "identity",
     "identity.email",
-    "topSites"
+    "topSites",
+    "bookmarks"
   ],
   "host_permissions": [
     "https://www.googleapis.com/*"
