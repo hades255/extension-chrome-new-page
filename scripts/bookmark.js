@@ -75,20 +75,20 @@ function renderBookmarksBar(bookmarkRoot) {
     a.href = node.url;
     a.title = node.title || node.url;
 
-    const img = document.createElement("img");
-    img.className = "bb-favicon";
-    img.alt = "";
-    img.referrerPolicy = "no-referrer";
-    img.src = faviconForUrl(node.url);
-    img.onerror = () => {
-      img.src = faviconForUrl("");
-    };
+    // const img = document.createElement("img");
+    // img.className = "bb-favicon";
+    // img.alt = "";
+    // img.referrerPolicy = "no-referrer";
+    // img.src = faviconForUrl(node.url);
+    // img.onerror = () => {
+    //   img.src = faviconForUrl("");
+    // };
 
     const title = document.createElement("span");
     title.className = "bb-title";
     title.textContent = node.title || node.url;
 
-    a.appendChild(img);
+    // a.appendChild(img);
     a.appendChild(title);
 
     a.addEventListener("click", (e) => {
